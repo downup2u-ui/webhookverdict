@@ -1,0 +1,1723 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Verify whether Stripe produced a valid signature for a specific webhook delivery by submitting a verification ID and your webhook signing secret.">
+      
+      
+      
+        <link rel="canonical" href="https://webhookverdict.com/tools/stripe-webhook-signature-verifier/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../../problems/webhook-not-triggered/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Stripe Webhook Signature Verifier – Verify Stripe Webhook Signatures Online - Webhook Failure Verdict</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/tools.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#stripe-webhook-signature-verifier" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Webhook Failure Verdict" class="md-header__button md-logo" aria-label="Webhook Failure Verdict" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Webhook Failure Verdict
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Stripe Webhook Signature Verifier – Verify Stripe Webhook Signatures Online
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Webhook Failure Verdict" class="md-nav__button md-logo" aria-label="Webhook Failure Verdict" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Webhook Failure Verdict
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Home
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Online Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Online Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stripe Webhook Signature Verifier (Online Tool)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stripe Webhook Signature Verifier (Online Tool)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#verify-stripe-webhook-signature-online" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify Stripe Webhook Signature Online
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stripe-webhook-signature-checker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stripe Webhook Signature Checker
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-this-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to use this tool
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-failure-reasons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common failure reasons
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatible-with-stripe-webhook-signing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compatible with Stripe Webhook Signing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-being-verified-and-what-is-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is being verified (and what is not)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#webhook-secret-origin-and-confidentiality-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Webhook Secret: origin and confidentiality boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-verification-can-fail-even-when-the-event-is-100-from-stripe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why verification can fail even when the event is 100% from Stripe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stripe-webhook-signature-verification-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stripe Webhook Signature Verification FAQ
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Problems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Problems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-not-triggered/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-not-triggered
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-not-received/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-not-received
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-timeout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-timeout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-signature-invalid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-signature-invalid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-retry-not-working/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-retry-not-working
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-delivery-delayed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-delivery-delayed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-duplicate-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-duplicate-delivery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-out-of-order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-out-of-order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-400/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-400
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-401/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-401
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-403/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-403
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-404/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-404
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-410/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-410
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-500/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-500
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-502/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-502
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-503/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-503
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-timestamp-invalid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-timestamp-invalid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../problems/webhook-secret-mismatch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-secret-mismatch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verdict
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Verdict
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../verdict/webhook-failure-verdict/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-failure-verdict
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="stripe-webhook-signature-verifier">Stripe Webhook Signature Verifier</h1>
+<style>
+.tool-panel {
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  background: rgba(15, 23, 42, 0.03);
+  padding: 14px 16px;
+  border-radius: 12px;
+  border-left: 4px solid rgba(79, 70, 229, 0.55);
+  margin: 12px 0 18px;
+}
+
+.tool-panel__hint {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  color: rgba(15, 23, 42, 0.78);
+}
+
+.tool-box input[type="text"],
+.tool-box input[type="password"] {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 23, 42, 0.25);
+  background: #ffffff;
+  color: rgba(15, 23, 42, 0.95);
+}
+
+.tool-box input::placeholder {
+  color: rgba(15, 23, 42, 0.45);
+}
+
+.tool-box input:focus {
+  outline: none;
+  border-color: rgba(79, 70, 229, 0.8);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.18);
+  background: #ffffff;
+}
+</style>
+
+<div class="tool-panel tool-box">
+  <p class="tool-panel__hint">Enter delivery verification details to get an immediate verdict.</p>
+
+  <label for="vidInput">Verification ID</label>
+  <input id="vidInput" type="text" placeholder="verification_id from this tool (not Stripe evt_...)" autocomplete="off" />
+
+  <label for="secretInput">Webhook signing secret</label>
+  <input id="secretInput" type="password" placeholder="whsec_..." autocomplete="off" />
+
+  <small style="opacity:0.6">Used once for this verification. Not stored.</small>
+
+  <button class="tool-button tool-button--primary" type="button" onclick="verifyStripeSignature()">Verify signature</button>
+
+  <pre id="verifyResult" class="tool-result" aria-live="polite"></pre>
+</div>
+
+<p>Technical verifier that returns a one-time cryptographic verdict for a Stripe webhook delivery using verification_id and signing secret; no event replay.
+This is a standalone online tool. No account required.
+It is an online stripe webhook signature verifier for one-delivery decisions.</p>
+<p>This page matches search intent such as:</p>
+<ul>
+<li>"verify stripe webhook signature online"</li>
+<li>"stripe webhook signature invalid"</li>
+<li>"stripe webhook signature checker"</li>
+</ul>
+<h2 id="verify-stripe-webhook-signature-online">Verify Stripe Webhook Signature Online</h2>
+<p>This is an online Stripe webhook signature checker that returns <code>valid</code> or <code>invalid</code> (with reason) for one delivery using a verification ID and webhook signing secret.</p>
+<p><a href="../../">Back to Home</a></p>
+<p>Related failure pages:
+- <a href="../../problems/webhook-signature-invalid/">webhook-signature-invalid</a>
+- <a href="../../problems/webhook-secret-mismatch/">webhook-secret-mismatch</a>
+- <a href="../../problems/webhook-timestamp-invalid/">webhook-timestamp-invalid</a></p>
+<h2 id="stripe-webhook-signature-checker">Stripe Webhook Signature Checker</h2>
+<p>Use this stripe webhook signature checker to verify stripe webhook signature online for a single delivery reference.</p>
+<div class="tool-box">
+  <section>
+    <h3>Verify Stripe Webhook Signature (Online Tool)</h3>
+    <small style="opacity:0.75">
+      <strong>Input</strong>
+    </small>
+    <ul>
+      <li><code>verification_id</code></li>
+      <li>webhook signing secret (<code>whsec_...</code>)</li>
+    </ul>
+
+    <small style="opacity:0.75">
+      <strong>Output</strong>
+    </small>
+    <ul>
+      <li><code>valid</code></li>
+      <li><code>invalid</code> (with reason)</li>
+    </ul>
+
+    <small style="opacity:0.75">
+      Output is a one-time verdict for that specific delivery. Verification IDs expire in ~5 minutes and can be used once.
+    </small>
+  </section>
+
+  <details style="margin-top:16px">
+    <summary><strong>How to get a verification ID (required once)</strong></summary>
+    <section style="margin-top:12px">
+      <p>
+        Configure Stripe to send webhooks to the endpoint below, then send a test event from the Stripe Dashboard.
+        A <strong>verification ID</strong> is generated ONLY when Stripe successfully delivers a webhook to this endpoint.
+        Verification IDs are short-lived (approximately 5 minutes).
+      </p>
+      <pre>https://stripe-webhook-verifier.downup2u.workers.dev/webhook/stripe</pre>
+      <p>
+        Verification IDs expire shortly after delivery. Please proceed to Step 2 immediately after sending a test event.
+      </p>
+      <p>
+        Use the verification ID generated from the most recent webhook delivery to this endpoint.
+        Old or reused verification IDs will fail with <code>verification_id not found</code>.
+      </p>
+      <div class="tool-callout tool-callout--warning">
+        <strong>Important:</strong> This step is receive-only. No input is required here and no request is triggered from this page.
+      </div>
+    </section>
+  </details>
+</div>
+
+<p><small style="opacity:0.6">
+  This tool only returns a cryptographic signature verdict for a specific delivery referenced by a verification ID.<br>
+  It does not replay webhook events, process event data, or validate Stripe API object schemas or business meaning.
+</small></p>
+<p>An online stripe webhook signature verifier determines whether a specific webhook delivery was cryptographically signed by Stripe.</p>
+<p>If Stripe webhook signature verification failed, use this page to verify Stripe webhook signature and receive a definitive Stripe signature verdict for a specific delivery.
+This is a one-time verification decision bound to a single <code>verification_id</code>.</p>
+<h2 id="when-to-use-this-tool">When to use this tool</h2>
+<p>Use this tool if Stripe webhook signature verification fails and you need a definitive verdict.</p>
+<details>
+  <summary><strong>When NOT to use this tool</strong></summary>
+
+## When NOT to use this tool
+
+Do NOT use this tool if you are debugging application code, validating business logic, or replaying webhooks.
+</details>
+
+<h2 id="common-failure-reasons">Common failure reasons</h2>
+<ul>
+<li>Verification ID expired</li>
+<li>Verification ID does not belong to this endpoint</li>
+<li>Webhook was never successfully delivered</li>
+</ul>
+<style>
+  .tool-callout {
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin: 10px 0 14px;
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    background: rgba(15, 23, 42, 0.03);
+    color: rgba(15, 23, 42, 0.92);
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+
+  .tool-callout code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.92em;
+  }
+
+  .tool-callout--warning {
+    border-color: rgba(245, 158, 11, 0.35);
+    background: rgba(245, 158, 11, 0.10);
+  }
+
+  .tool-callout--tip {
+    border-color: rgba(37, 99, 235, 0.30);
+    background: rgba(37, 99, 235, 0.08);
+  }
+
+  .tool-button {
+    appearance: none;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-weight: 600;
+    font-size: 0.98rem;
+    cursor: pointer;
+  }
+
+  .tool-button--primary {
+    border-color: rgba(79, 70, 229, 0.55);
+    background: linear-gradient(180deg, #5b55ff 0%, #4f46e5 100%);
+    color: #ffffff;
+    box-shadow:
+      0 10px 22px rgba(79, 70, 229, 0.18),
+      0 1px 0 rgba(255, 255, 255, 0.18) inset;
+  }
+
+  .tool-button--primary:hover {
+    filter: brightness(1.03);
+    box-shadow:
+      0 12px 26px rgba(79, 70, 229, 0.22),
+      0 1px 0 rgba(255, 255, 255, 0.18) inset;
+  }
+
+  .tool-button--primary:active {
+    transform: translateY(1px);
+  }
+
+  .tool-button--primary:focus-visible {
+    outline: 3px solid rgba(79, 70, 229, 0.35);
+    outline-offset: 2px;
+  }
+
+  .tool-result {
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    background: rgba(15, 23, 42, 0.02);
+    color: rgba(15, 23, 42, 0.92);
+    font-size: 0.95rem;
+    line-height: 1.35;
+    min-height: 44px;
+    white-space: pre-wrap;
+  }
+
+  .tool-result--success {
+    border-color: rgba(16, 185, 129, 0.35);
+    background: rgba(16, 185, 129, 0.10);
+  }
+
+  .tool-result--error {
+    border-color: rgba(239, 68, 68, 0.30);
+    background: rgba(239, 68, 68, 0.08);
+  }
+</style>
+
+<script>
+  async function verifyStripeSignature() {
+    const resultEl = document.getElementById('verifyResult');
+    const vidEl = document.getElementById('vidInput');
+    const secretEl = document.getElementById('secretInput');
+
+    const verificationId = (vidEl.value || '').trim();
+    const signingSecret = (secretEl.value || '').trim();
+
+    resultEl.classList.remove('tool-result--success', 'tool-result--error');
+
+    if (!verificationId) {
+      resultEl.classList.add('tool-result--error');
+      resultEl.textContent = '❌ invalid\n\nMissing verification_id.';
+      return;
+    }
+
+    if (!signingSecret) {
+      resultEl.classList.add('tool-result--error');
+      resultEl.textContent = '❌ invalid\n\nMissing signing_secret (whsec_...).';
+      return;
+    }
+
+    resultEl.textContent = 'Verifying...';
+
+    try {
+      const res = await fetch('https://stripe-webhook-verifier.downup2u.workers.dev/verify', {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          verification_id: verificationId,
+          signing_secret: signingSecret
+        })
+      });
+
+      let data;
+      const contentType = (res.headers.get('content-type') || '').toLowerCase();
+      if (contentType.includes('application/json')) {
+        data = await res.json();
+      } else {
+        const text = await res.text();
+        data = { message: text };
+      }
+
+      const result = data && typeof data === 'object' ? data.result : null;
+      const reason = (data && (data.reason || data.error || data.message))
+        ? String(data.reason || data.error || data.message).trim()
+        : '';
+
+      if (res.ok && result === 'valid') {
+        resultEl.classList.add('tool-result--success');
+        resultEl.textContent = '✅ valid';
+      } else {
+        resultEl.classList.add('tool-result--error');
+        if (reason) {
+          resultEl.textContent = '❌ invalid\n\n' + reason;
+        } else if (!res.ok) {
+          resultEl.textContent = '❌ invalid\n\nServer rejected the request.';
+        } else {
+          resultEl.textContent = '❌ invalid\n\nSignature invalid.';
+        }
+      }
+    } catch (e) {
+      resultEl.classList.add('tool-result--error');
+      resultEl.textContent = '❌ invalid\n\nNetwork / preflight failed.';
+    } finally {
+      secretEl.value = '';
+    }
+  }
+</script>
+
+<details>
+  <summary><strong>Why this tool exists</strong></summary>
+
+## Why this tool exists
+
+Stripe webhook signature verification is a high-frequency failure point in real systems.
+Most failures are not caused by Stripe sending an invalid request, but by **intermediate handling that changes the original request bytes**.
+
+Common causes (facts only):
+
+- **Raw body not preserved**: payload is reconstructed from a parsed object, re-stringified, trimmed, normalized, or has newline differences.
+- **JSON parsing happens before verification**: middleware consumes/decodes the body; the bytes used for verification are not identical.
+- **Wrong webhook secret**: secret from another endpoint, wrong environment (test vs live), or an outdated/rotated value.
+- **Wrong attempt/context**: mixing data across deliveries/environments/endpoints results in a failed verification.
+</details>
+
+<h2 id="compatible-with-stripe-webhook-signing">Compatible with Stripe Webhook Signing</h2>
+<p>Compatibility notes: checks the <code>Stripe-Signature</code> header format, uses timestamp tolerance semantics, and matches Stripe’s official signing algorithm for webhook signatures.</p>
+<h2 id="what-is-being-verified-and-what-is-not">What is being verified (and what is not)</h2>
+<p><strong>Verified:</strong> Given a <code>verification_id</code> (generated when Stripe delivers a webhook to this tool) and your <code>webhook signing secret</code> (<code>whsec_...</code>), the tool decides whether Stripe produced a <strong>valid signature</strong> for that specific delivery.</p>
+<p><strong>Not verified:</strong></p>
+<ul>
+<li>Business correctness</li>
+<li>Whether the event “should” occur</li>
+<li>Whether application code is implemented correctly</li>
+</ul>
+<p>This is a one-time decision about signature validity only. It does not replay or process the event.</p>
+<h2 id="webhook-secret-origin-and-confidentiality-boundary">Webhook Secret: origin and confidentiality boundary</h2>
+<p>The webhook secret is generated in the <strong>Stripe Dashboard</strong> when a webhook endpoint is created.
+Each endpoint has its own fixed secret (until rotated).
+This tool assumes that secret is already available.</p>
+<p>The secret is sensitive and is not intended to be exposed to third-party services.
+You provide it voluntarily for a single verification request, and it is used only to compute a verdict for the referenced delivery.</p>
+<h2 id="why-verification-can-fail-even-when-the-event-is-100-from-stripe">Why verification can fail even when the event is 100% from Stripe</h2>
+<p>Legitimate source does not imply verifiable signature.
+Signature verification operates on <strong>bytes</strong>, not on “equivalent JSON.”
+Any middle layer that changes the payload byte stream (re-encoding, newline normalization, trimming, or re-serialization) can keep the meaning but break verification.</p>
+<p><strong>Input:</strong> Verification ID, webhook signing secret<br />
+<strong>Output:</strong> Valid / Invalid Stripe webhook signature</p>
+<hr />
+<h2 id="stripe-webhook-signature-verification-faq">Stripe Webhook Signature Verification FAQ</h2>
+<h3>How do I verify a Stripe webhook signature?</h3>
+<p>Verify Stripe webhook signature by submitting the webhook delivery reference (<code>verification_id</code>) and the corresponding webhook signing secret (<code>whsec_...</code>) to obtain a definitive Stripe signature verdict for that specific delivery.</p>
+
+<h3>Can I use this tool without reading other pages?</h3>
+<p>Yes. This is a standalone online stripe webhook signature verifier page: you can verify stripe webhook signature online here and only use the related pages if you want context for common failure modes.</p>
+
+<h3>Why does signature verification fail even with the correct secret?</h3>
+<p>Most failures are caused by mixing contexts (wrong endpoint, wrong environment, or using a verification ID from a different delivery) or using the wrong signing secret. Verification is specific to one delivery and one secret.</p>
+
+<h3>What is a verification ID?</h3>
+<p>A verification ID identifies a specific webhook delivery that Stripe sent to this tool. Use it to request a signature verdict for that single delivery.</p>
+
+<h3>What does <code>verification_id not found</code> mean?</h3>
+<p>This indicates an expired or unknown webhook delivery reference (for example: the verification ID expired, belongs to a different endpoint/environment, or the webhook was never successfully delivered). It is not a system error.</p>
+
+<h3>Is the signing secret stored or cached?</h3>
+<p>No. It is used for one verification request and is not stored or cached by this page.</p>
+
+<h3>Does a valid signature mean the event data is safe to trust?</h3>
+<p>A valid signature confirms that the provided inputs (verification ID + secret) correspond to a valid Stripe signature for that delivery. It does not certify business correctness, expectedness of the event, or downstream handling.</p>
+
+<hr />
+<details>
+  <summary><strong>Tool positioning summary</strong></summary>
+
+## Tool positioning summary
+
+This is a tool for **assigning problem ownership**: it distinguishes “signature is mathematically invalid for these inputs” from “application-level decisions.”
+It fits scenarios where a webhook delivery has already been received and a signature verdict is needed for that specific delivery; it does not fit scenarios where the goal is to judge business meaning or whether an event should be accepted.
+</details>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "toc.integrate", "navigation.sections", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

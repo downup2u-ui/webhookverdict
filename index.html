@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Decide whether a webhook failure is worth continuing to debug.">
+        <meta name="description" content="Webhook failure verdicts for not triggered, not received, timeout, retry not working, signature invalid, and HTTP 4xx/5xx. Includes an online Stripe webhook signature verifier.">
       
       
       
@@ -14,7 +14,7 @@
       
       
       
-        <link rel="next" href="problems/webhook-not-triggered/">
+        <link rel="next" href="tools/stripe-webhook-signature-verifier/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Webhook Failure Verdict</title>
+        <title>Webhook Failure Verdict – Decide whether to keep debugging webhook failures - Webhook Failure Verdict</title>
       
     
     
@@ -47,6 +47,8 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="assets/css/tools.css">
     
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -102,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Webhook Failure Verdict – Decide whether to keep debugging webhook failures
             
           </span>
         </div>
@@ -178,7 +180,9 @@
 
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="." title="Webhook Failure Verdict" class="md-nav__button md-logo" aria-label="Webhook Failure Verdict" data-md-component="logo">
       
@@ -199,16 +203,32 @@
   
   
   
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
+    
+    
       
         
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
           
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="." class="md-nav__link md-nav__link--active">
+              
   
   
   <span class="md-ellipsis">
@@ -222,66 +242,25 @@
   
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+            </a>
+            
+          </div>
         
-  
-  
-  <span class="md-ellipsis">
-    
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
   
     Home
   
 
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#problem-entry-points" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Problem entry points
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#verdict" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Verdict
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -295,17 +274,218 @@
   
     
     
+      
+        
+      
     
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Online Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Online Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tools/stripe-webhook-signature-verifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stripe Webhook Signature Verifier (Online Tool)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -323,8 +503,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -853,17 +1033,28 @@
   
     
     
+      
+        
+      
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -881,8 +1072,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -934,54 +1125,6 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#problem-entry-points" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Problem entry points
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#verdict" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Verdict
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           
             <div class="md-content" data-md-component="content">
@@ -993,19 +1136,66 @@
 
 
 <h1 id="webhook-failure-verdict">Webhook Failure Verdict</h1>
-<p>This site does <strong>not</strong> teach how to fix webhooks.
-It does <strong>not</strong> provide code examples.
-It only helps engineers decide whether continuing to debug a webhook failure is worth it.</p>
+<p><strong>Webhook failures are high-frequency.</strong> This site helps engineers decide <strong>whether continuing to debug is worth it</strong> for common cases like:</p>
+<ul>
+<li>webhook not triggered / not received</li>
+<li>webhook timeout / delivery delayed</li>
+<li>retry not working / duplicate delivery / out-of-order</li>
+<li>signature invalid / secret mismatch</li>
+<li>HTTP 400 / 401 / 403 / 404 / 410 / 500 / 502 / 503</li>
+</ul>
+<p>This site does <strong>not</strong> teach step-by-step fixes or provide code snippets.<br />
+It provides a <strong>decision-first verdict page</strong> for each failure mode.</p>
+<p>This site exists because most webhook failures are decision problems, not implementation problems.</p>
+<p>If you are searching for questions like:</p>
+<ul>
+<li>"webhook not triggered but event exists"</li>
+<li>"webhook retry not working"</li>
+<li>"webhook timeout vs delayed delivery"</li>
+<li>"webhook signature invalid"</li>
+<li>"is this webhook failure worth debugging?"</li>
+</ul>
+<p>This site provides verdict-oriented answers to decide whether continuing is justified,
+instead of step-by-step fixes.</p>
+<p>Common searches include "webhook not triggered" and "webhook delivery failed"; this site is for deciding what to do next, not for implementation tutorials.</p>
+<hr />
+<h2 id="quick-decision-what-happened">Quick decision: what happened?</h2>
+<p>Pick the closest symptom:</p>
+<ul>
+<li><strong>Stripe signature verification failed / <code>invalid signature</code></strong></li>
+<li><strong>Webhook not triggered / not received</strong> → start with “not triggered” and “not received”.</li>
+<li><strong>Timeout / delivery delayed</strong> → start with “timeout” and “delivery delayed”.</li>
+<li><strong>HTTP status error (4xx/5xx)</strong> → use the matching HTTP page (400/401/403/404/410/500/502/503).</li>
+</ul>
+<hr />
+<h2 id="stripe-webhook-tools">Stripe Webhook Tools</h2>
+<p>Stripe webhook signature invalid?</p>
+<p>Single-delivery verdict tool for signature validity. Not a tutorial or fix guide.</p>
+<p><a href="tools/stripe-webhook-signature-verifier/">Stripe Webhook Signature Verifier</a></p>
+<hr />
 <h2 id="problem-entry-points">Problem entry points</h2>
+<p>If you already know the failure type, start here.</p>
+<h3 id="delivery-ordering">Delivery / ordering</h3>
 <ul>
 <li><a href="problems/webhook-not-triggered/">webhook-not-triggered</a></li>
 <li><a href="problems/webhook-not-received/">webhook-not-received</a></li>
-<li><a href="problems/webhook-timeout/">webhook-timeout</a></li>
-<li><a href="problems/webhook-signature-invalid/">webhook-signature-invalid</a></li>
-<li><a href="problems/webhook-retry-not-working/">webhook-retry-not-working</a></li>
 <li><a href="problems/webhook-delivery-delayed/">webhook-delivery-delayed</a></li>
 <li><a href="problems/webhook-duplicate-delivery/">webhook-duplicate-delivery</a></li>
 <li><a href="problems/webhook-out-of-order/">webhook-out-of-order</a></li>
+</ul>
+<h3 id="time-retries">Time / retries</h3>
+<ul>
+<li><a href="problems/webhook-timeout/">webhook-timeout</a></li>
+<li><a href="problems/webhook-retry-not-working/">webhook-retry-not-working</a></li>
+</ul>
+<h3 id="signature-secrets">Signature / secrets</h3>
+<ul>
+<li><a href="problems/webhook-signature-invalid/">webhook-signature-invalid</a></li>
+<li><a href="problems/webhook-secret-mismatch/">webhook-secret-mismatch</a></li>
+<li><a href="problems/webhook-timestamp-invalid/">webhook-timestamp-invalid</a></li>
+</ul>
+<h3 id="http-errors">HTTP errors</h3>
+<ul>
 <li><a href="problems/webhook-400/">webhook-400</a></li>
 <li><a href="problems/webhook-401/">webhook-401</a></li>
 <li><a href="problems/webhook-403/">webhook-403</a></li>
@@ -1014,19 +1204,29 @@ It only helps engineers decide whether continuing to debug a webhook failure is 
 <li><a href="problems/webhook-500/">webhook-500</a></li>
 <li><a href="problems/webhook-502/">webhook-502</a></li>
 <li><a href="problems/webhook-503/">webhook-503</a></li>
-<li><a href="problems/webhook-timestamp-invalid/">webhook-timestamp-invalid</a></li>
-<li><a href="problems/webhook-secret-mismatch/">webhook-secret-mismatch</a></li>
 </ul>
+<hr />
 <h2 id="verdict">Verdict</h2>
 <ul>
 <li><a href="verdict/webhook-failure-verdict/">Webhook Failure Verdict</a></li>
 </ul>
+<hr />
+<h2 id="faq">FAQ</h2>
+<p><strong>Is this a webhook debugging tutorial?</strong><br />
+No. This is a verdict site: it helps decide whether to keep debugging.</p>
+<p><strong>Does “valid signature” mean the event is correct?</strong><br />
+No. It only means the signature is cryptographically valid for that delivery.</p>
+<p><strong>Can I use this for any provider (not Stripe)?</strong><br />
+This site focuses on webhook failure patterns. The signature verifier tool is Stripe-specific.</p>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1070,7 +1270,7 @@ It only helps engineers decide whether continuing to debug a webhook failure is 
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.indexes", "toc.integrate", "navigation.sections", "navigation.expand"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
