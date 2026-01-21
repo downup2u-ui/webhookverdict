@@ -1284,6 +1284,23 @@
 
 
 <h1 id="stripe-webhook-signature-verifier">Stripe Webhook Signature Verifier</h1>
+<div class="admonition note">
+  <p class="admonition-title">Step 1 — Configure Stripe Webhook Endpoint (required once)</p>
+  <ul>
+    <li><strong>Stripe webhook endpoint (receive-only):</strong><br>
+      <code>https://stripe-webhook-verifier.downup2u.workers.dev/webhook/stripe</code>
+    </li>
+    <li>This endpoint receives Stripe webhooks only.</li>
+    <li>A <code>verification_id</code> is generated ONLY after Stripe successfully delivers a webhook.</li>
+    <li>Verification IDs expire in ~5 minutes.</li>
+  </ul>
+  <p><strong>Important</strong></p>
+  <ul>
+    <li>No input is required on this page for Step 1.</li>
+    <li>This page does NOT trigger any webhook requests.</li>
+  </ul>
+</div>
+
 <style>
 .tool-panel {
   border: 1px solid rgba(15, 23, 42, 0.18);
@@ -1389,11 +1406,8 @@ It is an online stripe webhook signature verifier for one-delivery decisions.</p
     <summary><strong>How to get a verification ID (required once)</strong></summary>
     <section style="margin-top:12px">
       <p>
-        Configure Stripe to send webhooks to the endpoint below, then send a test event from the Stripe Dashboard.
-        A <strong>verification ID</strong> is generated ONLY when Stripe successfully delivers a webhook to this endpoint.
-        Verification IDs are short-lived (approximately 5 minutes).
+        Follow Step 1 above, then send a test event from the Stripe Dashboard.
       </p>
-      <pre>https://stripe-webhook-verifier.downup2u.workers.dev/webhook/stripe</pre>
       <p>
         Verification IDs expire shortly after delivery. Please proceed to Step 2 immediately after sending a test event.
       </p>
@@ -1401,9 +1415,6 @@ It is an online stripe webhook signature verifier for one-delivery decisions.</p
         Use the verification ID generated from the most recent webhook delivery to this endpoint.
         Old or reused verification IDs will fail with <code>verification_id not found</code>.
       </p>
-      <div class="tool-callout tool-callout--warning">
-        <strong>Important:</strong> This step is receive-only. No input is required here and no request is triggered from this page.
-      </div>
     </section>
   </details>
 </div>
