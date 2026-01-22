@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#webhook-not-triggered-failure-verdict" class="md-skip">
+        <a href="#webhook-not-triggered-event-generation-verdict" class="md-skip">
           Skip to content
         </a>
       
@@ -626,6 +626,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    webhook-not-triggered
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -642,6 +660,102 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#verdict-tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verdict (TL;DR)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-happens-structural" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this happens (structural)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-further-debugging-often-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why further debugging often fails
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#responsibility-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsibility boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-evidence-would-change-this-verdict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What evidence would change this verdict
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deterministic-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deterministic verification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final decision
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1241,11 +1355,24 @@
 
 
 
-<h1 id="webhook-not-triggered-failure-verdict">Webhook Not Triggered – Failure Verdict</h1>
-<p>This page describes what it means when a webhook is never triggered
-and why continuing to debug may not always be productive.</p>
-<p>See the final decision here:
-<a href="../../verdict/webhook-failure-verdict/">Webhook Failure Verdict</a></p>
+<h1 id="webhook-not-triggered-event-generation-verdict">Webhook Not Triggered – Event Generation Verdict</h1>
+<h2 id="verdict-tldr">Verdict (TL;DR)</h2>
+<p><strong>STOP treating this as a webhook problem.</strong></p>
+<h2 id="why-this-happens-structural">Why this happens (structural)</h2>
+<p>If no event is generated, no webhook can fire.
+This precedes delivery.</p>
+<h2 id="why-further-debugging-often-fails">Why further debugging often fails</h2>
+<p>Webhook infrastructure cannot deliver nonexistent events.</p>
+<h2 id="responsibility-boundary">Responsibility boundary</h2>
+<p>Event generation is owned by the sender system.</p>
+<h2 id="what-evidence-would-change-this-verdict">What evidence would change this verdict</h2>
+<ul>
+<li>Verified event generation at source</li>
+</ul>
+<h2 id="deterministic-verification">Deterministic verification</h2>
+<p>Check event existence, not webhook delivery.</p>
+<h2 id="final-decision">Final decision</h2>
+<p><strong>STOP.</strong></p>
 
 
 

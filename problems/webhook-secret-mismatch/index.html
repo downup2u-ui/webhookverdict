@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#webhook-secret-mismatch-failure-verdict" class="md-skip">
+        <a href="#webhook-secret-mismatch-signature-failure-verdict" class="md-skip">
           Skip to content
         </a>
       
@@ -1153,10 +1153,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-this-failure-usually-means" class="md-nav__link">
+  <a href="#verdict-tldr" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What this failure usually means
+        Verdict (TL;DR)
       
     </span>
   </a>
@@ -1164,10 +1164,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#common-false-assumptions" class="md-nav__link">
+  <a href="#why-this-happens-structural" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Common false assumptions
+        Why this happens (structural)
       
     </span>
   </a>
@@ -1175,10 +1175,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-debugging-often-goes-wrong" class="md-nav__link">
+  <a href="#why-further-debugging-often-fails" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why debugging often goes wrong
+        Why further debugging often fails
       
     </span>
   </a>
@@ -1186,10 +1186,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#responsibility-boundaries" class="md-nav__link">
+  <a href="#responsibility-boundary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Responsibility boundaries
+        Responsibility boundary
       
     </span>
   </a>
@@ -1197,10 +1197,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#when-to-stop-debugging" class="md-nav__link">
+  <a href="#what-evidence-would-change-this-verdict" class="md-nav__link">
     <span class="md-ellipsis">
       
-        When to stop debugging
+        What evidence would change this verdict
       
     </span>
   </a>
@@ -1208,10 +1208,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#link-to-verdict" class="md-nav__link">
+  <a href="#deterministic-verification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Link to verdict
+        Deterministic verification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final decision
       
     </span>
   </a>
@@ -1344,25 +1355,29 @@
 
 
 
-<h1 id="webhook-secret-mismatch-failure-verdict">Webhook Secret Mismatch – Failure Verdict</h1>
-<h2 id="what-this-failure-usually-means">What this failure usually means</h2>
-<p>This page helps decide whether continuing to debug webhook secret mismatch failures is worth it.</p>
-<p>This page describes what this webhook failure commonly indicates at a system boundary level.</p>
-<h2 id="common-false-assumptions">Common false assumptions</h2>
+<h1 id="webhook-secret-mismatch-signature-failure-verdict">Webhook Secret Mismatch – Signature Failure Verdict</h1>
+<h2 id="verdict-tldr">Verdict (TL;DR)</h2>
+<p><strong>CONTINUE only if signature verification fails.</strong><br />
+Otherwise, STOP investigating secrets.</p>
+<h2 id="why-this-happens-structural">Why this happens (structural)</h2>
+<p>Webhook signatures fail when the signing secret does not match the expected value
+or when the raw request body has been altered.</p>
+<h2 id="why-further-debugging-often-fails">Why further debugging often fails</h2>
+<p>Guessing secrets or re-copying values does not increase certainty.
+Only cryptographic verification resolves this.</p>
+<h2 id="responsibility-boundary">Responsibility boundary</h2>
+<p>Secret correctness is a shared boundary.
+Payload integrity is the receiver's responsibility.</p>
+<h2 id="what-evidence-would-change-this-verdict">What evidence would change this verdict</h2>
 <ul>
-<li>The issue must be inside your application code.</li>
-<li>More debugging automatically increases certainty.</li>
-<li>Sender claims are equivalent to independently verifiable delivery.</li>
+<li>Deterministic cryptographic verification result</li>
 </ul>
-<h2 id="why-debugging-often-goes-wrong">Why debugging often goes wrong</h2>
-<p>Time is spent optimizing or rewriting logic without confirming a ground-truth request and an observable delivery path.</p>
-<h2 id="responsibility-boundaries">Responsibility boundaries</h2>
-<p>Some parts of delivery, retry policy, and upstream evidence are owned by the sender or the network path before your infrastructure.</p>
-<h2 id="when-to-stop-debugging">When to stop debugging</h2>
-<p>Stop when further debugging cannot increase certainty without new observable evidence.</p>
-<h2 id="link-to-verdict">Link to verdict</h2>
-<p><a href="../../verdict/webhook-failure-verdict/">Webhook Failure Verdict</a></p>
-<p>For a deterministic verdict, use <a href="../../tools/stripe-webhook-signature-verifier/">Stripe Webhook Signature Verifier</a>.</p>
+<h2 id="deterministic-verification">Deterministic verification</h2>
+<p>Use the Stripe signature verifier:
+https://webhookverdict.com/tools/stripe-webhook-signature-verifier/</p>
+<h2 id="final-decision">Final decision</h2>
+<p><strong>CONDITIONAL.</strong><br />
+Continue only with verified cryptographic evidence.</p>
 
 
 
