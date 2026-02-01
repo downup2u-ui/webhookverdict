@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://webhookverdict.com/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/judgment-review/</loc>
@@ -10,51 +10,51 @@
     </url>
     <url>
          <loc>https://webhookverdict.com/privacy/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-400/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-401/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-403/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-404/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-410/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-500/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-502/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-503/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-delivery-delayed/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-duplicate-delivery/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-not-received/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-not-triggered/</loc>
@@ -62,34 +62,42 @@
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-out-of-order/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-retry-not-working/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-secret-mismatch/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-signature-invalid/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-timeout/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/problems/webhook-timestamp-invalid/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
+    </url>
+    <url>
+         <loc>https://webhookverdict.com/raycast/webhook-delivered-but-ignored/</loc>
+         <lastmod>2026-02-01</lastmod>
+    </url>
+    <url>
+         <loc>https://webhookverdict.com/raycast/webhook-not-triggered/</loc>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/tools/stripe-webhook-signature-verifier/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
     <url>
          <loc>https://webhookverdict.com/verdict/webhook-failure-verdict/</loc>
-         <lastmod>2026-01-22</lastmod>
+         <lastmod>2026-02-01</lastmod>
     </url>
 </urlset>
