@@ -29,3 +29,7 @@
   background: #f6f8fa;
   padding: 0.75rem;
 }
+
+.md-header__button.md-logo {
+  display: none !important;
+}

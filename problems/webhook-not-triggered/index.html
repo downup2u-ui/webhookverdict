@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#webhook-not-triggered-event-generation-verdict" class="md-skip">
+        <a href="#webhook-not-triggered" class="md-skip">
           Skip to content
         </a>
       
@@ -677,10 +677,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#verdict-tldr" class="md-nav__link">
+  <a href="#status-fact-only" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verdict (TL;DR)
+        Status (Fact Only)
       
     </span>
   </a>
@@ -688,10 +688,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-this-happens-structural" class="md-nav__link">
+  <a href="#verdict" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why this happens (structural)
+        Verdict
       
     </span>
   </a>
@@ -699,10 +699,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-further-debugging-often-fails" class="md-nav__link">
+  <a href="#boundary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why further debugging often fails
+        Boundary
       
     </span>
   </a>
@@ -713,7 +713,7 @@
   <a href="#responsibility-boundary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Responsibility boundary
+        Responsibility Boundary
       
     </span>
   </a>
@@ -721,10 +721,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-evidence-would-change-this-verdict" class="md-nav__link">
+  <a href="#evidence-that-would-change-this-state" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What evidence would change this verdict
+        Evidence That Would Change This State
       
     </span>
   </a>
@@ -732,21 +732,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deterministic-verification" class="md-nav__link">
+  <a href="#exits" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deterministic verification
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#final-decision" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Final decision
+        Exits
       
     </span>
   </a>
@@ -1355,24 +1344,32 @@
 
 
 
-<h1 id="webhook-not-triggered-event-generation-verdict">Webhook Not Triggered – Event Generation Verdict</h1>
-<h2 id="verdict-tldr">Verdict (TL;DR)</h2>
-<p><strong>STOP treating this as a webhook problem.</strong></p>
-<h2 id="why-this-happens-structural">Why this happens (structural)</h2>
-<p>If no event is generated, no webhook can fire.
-This precedes delivery.</p>
-<h2 id="why-further-debugging-often-fails">Why further debugging often fails</h2>
-<p>Webhook infrastructure cannot deliver nonexistent events.</p>
-<h2 id="responsibility-boundary">Responsibility boundary</h2>
-<p>Event generation is owned by the sender system.</p>
-<h2 id="what-evidence-would-change-this-verdict">What evidence would change this verdict</h2>
+<h1 id="webhook-not-triggered">Webhook Not Triggered</h1>
+<h2 id="status-fact-only">Status (Fact Only)</h2>
+<p>No webhook event was observed within the expected time window.</p>
+<h2 id="verdict">Verdict</h2>
+<p>Webhook did not occur in the expected window.</p>
+<h2 id="boundary">Boundary</h2>
+<p>This page does not diagnose causes or recommend actions.<br />
+It only confirms the current state.</p>
+<h2 id="responsibility-boundary">Responsibility Boundary</h2>
+<p>Event generation is owned by the sender system.<br />
+Webhook delivery cannot occur without an originating event.</p>
+<h2 id="evidence-that-would-change-this-state">Evidence That Would Change This State</h2>
 <ul>
-<li>Verified event generation at source</li>
+<li>Verified existence of the event at the source system</li>
 </ul>
-<h2 id="deterministic-verification">Deterministic verification</h2>
-<p>Check event existence, not webhook delivery.</p>
-<h2 id="final-decision">Final decision</h2>
-<p><strong>STOP.</strong></p>
+<hr />
+<h2 id="exits">Exits</h2>
+<ul>
+<li><strong><a href="/judgment-review/">Request a Judgment Review</a></strong></li>
+</ul>
+<hr />
+<!--
+GA4 placeholder
+(Instrumentation intentionally minimal.
+Actual GA4 injection handled separately.)
+-->
 
 
 
@@ -1402,11 +1399,6 @@ This precedes delivery.</p>
       <div class="md-copyright">
   
   
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
-  
 </div>
       
     </div>
@@ -1426,6 +1418,8 @@ This precedes delivery.</p>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../assets/javascripts/ga4.js"></script>
       
     
   </body>
